@@ -38,7 +38,7 @@ class Crud_model extends CI_Model{
 
 
 
-        $this->db->where('letters.id', $id);
+        $this->db->where('letters.lid', $id);
 
         $this->db->join('tank_users','letters.author_id = tank_users.id');
 
@@ -55,13 +55,13 @@ class Crud_model extends CI_Model{
 
     function edit_letter($data, $id){
         // on your own... 2 lines of code to edit an item. Test using php myadmin
-        $this->db->where('id', $id);
+        $this->db->where('lid', $id);
         $this->db->update('letters', $data);
     }
 
     function delete_row($id){
 
-        $this->db->where('id', $id);
+        $this->db->where('lid', $id);
         $this->db->delete('letters');
     }
 
@@ -74,6 +74,12 @@ class Crud_model extends CI_Model{
         // do a basic select, if it returns something, then this user owns that item
         // if it returns FALSE, then ntohing was found in the db for this user and that item, so the DO NOT own it...in the controller we kick them out
         // $query = $this->db->get('letter');
+
+        $this->db->select('*');
+        $this->db->from('letters');
+        $this->db->where('lid', $item_id);
+        $this->db->where('author_id', $user_id);
+        $query = $this->db->get();
 
         if($query->num_rows() > 0){
             return $query->result();

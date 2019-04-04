@@ -24,6 +24,13 @@ class Crud extends CI_Controller {
 
 		}
 
+		// $this->load->model('crud_model');
+
+		// if (!$this->crud_model->check_owner($id, $data['author_id'])){
+		// 	echo "nhot your item";
+		// 	exit();
+		// }
+
 		// validation library: not autoloaded, so we must load this here or in a construct
 
 		$this->load->library('form_validation');
@@ -89,6 +96,8 @@ class Crud extends CI_Controller {
 			redirect('/', 'location');
 		}
 
+	
+
 		$this->load->model('crud_model');
 		$tmp['results'] = $this->crud_model->get_letter_detail($id);
 
@@ -113,11 +122,18 @@ class Crud extends CI_Controller {
 
 		}
 
+		$this->load->model('crud_model');
+
+		if (!$this->crud_model->check_owner($id, $data['author_id'])){
+			echo "nhot your item";
+			exit();
+		}
+
 		// add a bit of URL security
 		if(!is_numeric($id)){
 			redirect('/', 'location');
 		}
-		
+	
 		// validation library: not autoloaded, so we must load this here or in a construct
 
 		$this->load->model('crud_model');
@@ -160,6 +176,8 @@ class Crud extends CI_Controller {
 		}
 
 	} // \ edit
+
+
 
 
 	public function delete($id){

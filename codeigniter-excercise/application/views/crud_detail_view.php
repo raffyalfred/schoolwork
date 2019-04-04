@@ -8,8 +8,8 @@
     <div class="alert alert-info">by <b><?php echo $row->username; ?></b></div>
     <div style="margin-bottom: 1rem;"><?php echo $row->description; ?></div>
 
-    <div style="margin-bottom: 1rem;"><a href="<?php echo base_url(); ?>crud/edit/<?php echo $row->id; ?>" class="btn btn-primary">Edit</a></div>
-    <div style="margin-bottom: 1rem;"><a href="<?php echo base_url(); ?>crud/delete/<?php echo $row->id; ?>" class="btn btn-primary confirm">Delete</a></div>
+    <div style="margin-bottom: 1rem;"><a href="<?php echo base_url(); ?>crud/edit/<?php echo $row->lid; ?>" class="btn btn-primary">Edit</a></div>
+    <div style="margin-bottom: 1rem;"><a href="<?php echo base_url(); ?>crud/delete/<?php echo $row->lid; ?>" class="btn btn-primary confirm">Delete</a></div>
 
 <?php endforeach; ?>
 <?php endif; ?>

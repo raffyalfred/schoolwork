@@ -6,7 +6,7 @@ if($results){
     foreach($results as $row){
         $letter = $row->letter;
         $description = $row->description;
-        $id = $row->id;
+        $id = $row->lid;
     }
 }
 
